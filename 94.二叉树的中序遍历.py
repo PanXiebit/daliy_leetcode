@@ -14,23 +14,23 @@
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
     
-    ## 递归法
-    #     res = []
+    #    递归法
+        res = []
 
-    #     self.travelsal(root, res)
-    #     return res
+        self.travelsal(root, res)
+        return res
 
-    # def travelsal(self, cur, res):
-    #     if cur is None:
-    #         return
-    #     self.travelsal(cur.left, res)
-    #     res.append(cur.val)
-    #     self.travelsal(cur.right, res)
+    def travelsal(self, cur, res):
+        if cur is None:
+            return
+        self.travelsal(cur.left, res)
+        res.append(cur.val)
+        self.travelsal(cur.right, res)
 
-    ## 迭代法
-    stack = []
 
-    
+
+
+
 
 # @lc code=end
 
