@@ -11,6 +11,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
         queue = [root]
@@ -22,6 +23,7 @@ class Solution:
             flag = 0
             for i in range(len(queue)):
                 node = queue.pop(0)
+                print("cur_node: ", node.val)
                 if node.left is not None:
                     queue.append(node.left)
                     flag = 1
