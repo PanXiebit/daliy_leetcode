@@ -15,22 +15,30 @@ class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
     
     #    递归法
+    #     res = []
+
+    #     self.travelsal(root, res)
+    #     return res
+
+    # def travelsal(self, cur, res):
+    #     if cur is None:
+    #         return
+    #     self.travelsal(cur.left, res)
+    #     res.append(cur.val)
+    #     self.travelsal(cur.right, res)
+
         res = []
-
-        self.travelsal(root, res)
+        stack = []
+        cur = root
+        while(cur is not None or stack):
+            if cur is not None:
+                stack.append(cur)
+                cur = cur.left
+            else:
+                cur = stack.pop(-1)
+                res.append(cur.val)
+                cur = cur.right
         return res
-
-    def travelsal(self, cur, res):
-        if cur is None:
-            return
-        self.travelsal(cur.left, res)
-        res.append(cur.val)
-        self.travelsal(cur.right, res)
-
-
-
-
-
 
 # @lc code=end
 
