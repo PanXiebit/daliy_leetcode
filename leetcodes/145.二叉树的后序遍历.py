@@ -15,31 +15,18 @@ class Solution:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
     
     # 递归法
-    #     res = []
-    #     self.travelsal(root, res)
-    #     return res
-
-
-
-    # def travelsal(self, cur, res):
-    #     if cur is None:
-    #         return
-    #     self.travelsal(cur.left, res)
-    #     self.travelsal(cur.right, res)
-    #     res.append(cur.val)
-
         res = []
-        stack = [root]
-        if root is None:
-            return []
-        while(stack):
-            cur = stack.pop(-1)
-            res.append(cur.val)
-            if cur.right is not None:
-                stack.append(cur.right)
-            if cur.left is not None:
-                stack.append(cur.left)
-        return res 
+        self.travelsal(root, res)
+        return res
+
+    def travelsal(self, cur, res):
+        if cur is None:
+            return
+        self.travelsal(cur.left, res)
+        self.travelsal(cur.right, res)
+        res.append(cur.val)
+
+ 
 
 
 # @lc code=end
