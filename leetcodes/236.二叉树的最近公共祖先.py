@@ -19,13 +19,9 @@ class Solution:
         return self.travelsal(root, p, q)
 
     def travelsal(self, cur, p, q):
-        
-
         if cur is None:
             return
 
-        print("here!", cur.val)
-        
         if cur is p or cur is q:
             return cur
 
@@ -40,5 +36,31 @@ class Solution:
         
         if right is not None:
             return right
+    #     return self.travelsal(root, p, q)
+
+
+    # def travelsal(self, cur, p, q):
+        
+    #     if cur is None:
+    #         return None
+    #     print("before: ", cur.val)
+    #     if cur is p or cur is q:
+    #         print("stop: ", cur.val)
+    #         return cur
+
+    #     left = self.travelsal(cur.left, p, q)
+    #     right = self.travelsal(cur.right, q, q)
+
+    #     print("after: ", cur.val)
+    #     if left is not None and right is not None:
+    #         return cur
+    #     if left is not None:
+    #         return left
+    #     if right is not None:
+    #         return right
+    #     else:
+    #         return None
+
+
 # @lc code=end
 
