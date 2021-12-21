@@ -18,6 +18,7 @@ class Solution:
                     res[top_idx] = cur_idx - top_idx
                 
                 stack.append((cur_t, cur_idx))
+        print(stack)
         return res
 
 
