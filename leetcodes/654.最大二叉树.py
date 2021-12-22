@@ -20,7 +20,6 @@ class Solution:
         root = TreeNode(max_num)
         root.left = self.constructMaximumBinaryTree(nums[:idx])
         root.right = self.constructMaximumBinaryTree(nums[idx+1:])
-
         return root
 
 # @lc code=end
