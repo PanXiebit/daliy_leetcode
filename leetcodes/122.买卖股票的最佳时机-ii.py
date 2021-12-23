@@ -21,9 +21,10 @@ class Solution:
         for i in range(1, len(prices)):
             dp[i][0] = max(dp[i-1][0], dp[i-1][1] - prices[i])
             dp[i][1] = max(dp[i-1][1], dp[i-1][0] + prices[i])
-        print(dp)
         return max(dp[-1][0], dp[-1][1])
 
+        ## 这里有个误区就是，我在考虑dp[i][0]，会去考虑 dp[i-2], dp[i-3]，导致递推公式写不出来
+        # 但其实上述代码考虑了这个情况的。比如 i=1时卖入，i=2接着买入,他俩的值是不变的 dp[i][0] = max(dp[i-1][0]。
 
 # @lc code=end
 
