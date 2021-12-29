@@ -76,6 +76,49 @@ class Solution:
      
         return [leftboard, rightboard]
 
+
+# solution 3
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        start = 0
+        end = len(nums) - 1
+        flag = -1
+        while(start <= end):
+            middle = (end - start) // 2 + start
+            if nums[middle] == target:
+                flag = 1
+                break
+            elif nums[middle] > target:
+                end = middle - 1
+            elif nums[middle] < target:
+                start = middle + 1
+        if flag == -1: return [-1, -1]
+        else:
+            left = self.find_left(nums, 0, middle, target)
+            right = self.find_right(nums, middle, len(nums)-1, target)
+            return [left, right]  
+
+    def find_left(self, nums, start, end, target):
+        while(start <= end):
+            middle = (end - start) // 2 + start
+            if nums[middle] < target:
+                start = middle + 1
+            else:
+                end = middle - 1
+        return start 
+
+    
+    def find_right(self, nums, start, end, target):
+        
+        while(start <= end):
+            middle = (end - start) // 2 + start
+            if nums[middle] > target:
+                end = middle - 1
+            else:
+                start = middle + 1
+        return end
+
+
 """
 - 二分查找：**循环不变量**，保持区间的定义不变，比如 [left, right], 那么 while(left <= right), 且nums[middle] > target时，middle肯定不可能等于target,则 right = middle - 1. 
 

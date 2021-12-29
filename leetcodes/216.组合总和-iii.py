@@ -17,7 +17,6 @@ class Solution:
             self.res.append(self.nums.copy())
             return
 
-
         for i in range(start, 10):
             if len(self.nums) < k and sum(self.nums) < n:
                 self.nums.append(i)
