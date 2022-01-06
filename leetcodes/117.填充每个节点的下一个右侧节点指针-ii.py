@@ -27,10 +27,8 @@ class Solution:
             for _ in range(size):
                 node = queue.pop(0)
                 level_node.append(node)
-                if node.left is not None:
-                    queue.append(node.left)
-                if node.right is not None:
-                    queue.append(node.right)
+                if node.left is not None: queue.append(node.left)
+                if node.right is not None: queue.append(node.right)
             for i in range(len(level_node)-1):
                 level_node[i].next = level_node[i+1]
             level_node[-1].next = None
