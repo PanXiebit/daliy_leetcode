@@ -7,20 +7,6 @@
 # @lc code=start
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
-        # i, j = 0, len(heights)-1
-        # res = -1
-        # while(i<=j):
-        #     leng = j - i + 1
-        #     min_h = min(heights[i:j+1])
-        #     cur = min_h * leng
-        #     if cur > res:
-        #         res = cur
-        #     print(i, j, cur)
-        #     if heights[i] < heights[j]:
-        #         i += 1
-        #     else:
-        #         j -= 1
-        # return res
         stack = []
         res = 0
         for i in range(len(heights)):
