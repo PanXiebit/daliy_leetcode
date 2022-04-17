@@ -37,10 +37,8 @@ class Solution:
             tmp = cur.left
             cur.left = cur.right
             cur.right = tmp
-            if cur.left is not None:
-                queue.append(cur.left)
-            if cur.right is not None:
-                queue.append(cur.right)
+            if cur.left: queue.append(cur.left)
+            if cur.right: queue.append(cur.right)
         return root
 
 
