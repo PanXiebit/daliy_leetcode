@@ -11,19 +11,10 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+ 
+
 class Solution:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
-    #     res = []
-    #     self.travelsal(root, res)
-    #     return res
-
-    # def travelsal(self, cur, res):
-    #     if cur is None:
-    #         return
-    #     res.append(cur.val)
-    #     self.travelsal(cur.left, res)
-    #     self.travelsal(cur.right, res)
-
     # 迭代法，使用栈的原因是，栈是后进先出，所以可以做到深度优先
         res = []
         stack = [root]

@@ -16,8 +16,10 @@ class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
         stack = []
+        if root is None:
+            return []
         cur = root
-        while (cur is not None or len(stack) > 0):
+        while(cur is not None or stack):
             if cur is not None:
                 stack.append(cur)
                 cur = cur.left
@@ -25,7 +27,7 @@ class Solution:
                 cur = stack.pop(-1)
                 res.append(cur.val)
                 cur = cur.right
-        return res
+        return res 
 
 
         
@@ -43,20 +45,6 @@ class Solution1:
 
 class Solution2:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
-    
-    #    递归法
-    #     res = []
-
-    #     self.travelsal(root, res)
-    #     return res
-
-    # def travelsal(self, cur, res):
-    #     if cur is None:
-    #         return
-    #     self.travelsal(cur.left, res)
-    #     res.append(cur.val)
-    #     self.travelsal(cur.right, res)
-
         res = []
         stack = []
         cur = root
