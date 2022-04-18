@@ -6,7 +6,42 @@
 
 
 # @lc code=start
-class Solution:
+
+
+
+class Solution1:
+    def longestPalindrome(self, s: str) -> str:
+        if len(s) <= 1: return s
+
+        import numpy as np
+        table = np.zeros((len(s), len(s)))
+
+        for i in range(len(s)):
+            table[i, i] = 1
+
+        maxLen = 0
+        maxPal = ""
+        # for i in range(len(s)):
+        #     for j in range(len(s)):
+        for i in range(len(s)-1, -1, -1):
+            for j in range(i, len(s)):
+                if s[i] == s[j]:
+                    if j-i <= 2: table[i,j] = j-i+1
+                    else:
+                        if table[i+1, j-1] != 0:
+                            table[i,j] = table[i+1, j-1] + 2
+                    if table[i,j] == j-i+1:
+                        if j - i + 1 > maxLen:
+                            maxLen = j - i + 1
+                            maxPal = s[i:j+1]
+        return maxPal
+
+
+
+
+
+
+class Solution2:
     def longestPalindrome(self, s: str) -> str:
         # leng = len(s)
 
@@ -51,8 +86,10 @@ class Solution:
         for i in range(len(s)-1, -1, -1):
             for j in range(i + 1, len(s)):
                 if s[i] == s[j]:
-                    if j - i <= 2: dp[i][j] = j - i + 1
-                    elif dp[i+1][j-1]: dp[i][j] = dp[i+1][j-1] + 2
+                    if j - i <= 2: 
+                        dp[i][j] = j - i + 1
+                    elif dp[i+1][j-1]: 
+                        dp[i][j] = dp[i+1][j-1] + 2
                         
                 if dp[i][j] == j -i +1:
                     if j -i + 1 > max_num:

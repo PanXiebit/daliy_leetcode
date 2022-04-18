@@ -11,7 +11,37 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        res = []
+        stack = []
+        cur = root
+        while (cur is not None or len(stack) > 0):
+            if cur is not None:
+                stack.append(cur)
+                cur = cur.left
+            else:
+                cur = stack.pop(-1)
+                res.append(cur.val)
+                cur = cur.right
+        return res
+
+
+        
+class Solution1:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        res = []
+        self.traversal(root, res)
+        return res
+    
+    def traversal(self, root, res):
+        if root is None: return
+        self.traversal(root.left, res)
+        res.append(root.val)
+        self.traversal(root.right, res)
+
+class Solution2:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
     
     #    递归法

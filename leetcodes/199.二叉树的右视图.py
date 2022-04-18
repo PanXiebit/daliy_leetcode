@@ -23,6 +23,24 @@ class Solution:
             for i in range(size):
                 node = queue.pop(0)
                 level_res.append(node.val)
+                if node.left is not None: queue.append(node.left)
+                if node.right is not None: queue.append(node.right)
+            res.append(level_res[-1])
+            
+        return res
+
+class Solution1:
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        if root is None:
+            return []
+        queue = [root]
+        res = []
+        while(len(queue) != 0):
+            level_res = []
+            size = len(queue)
+            for i in range(size):
+                node = queue.pop(0)
+                level_res.append(node.val)
                 if node.left is not None:
                     queue.append(node.left)
                 if node.right is not None:
