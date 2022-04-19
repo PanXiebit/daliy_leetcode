@@ -11,7 +11,12 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
+
+1
+                    
+        
+
+class Solution2:
     def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
         res = []
 
