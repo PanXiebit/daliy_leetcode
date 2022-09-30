@@ -12,10 +12,10 @@ class Solution:
 
         # return sort_nums[k-1]
 
-        self.quick_sort(nums, 0, len(nums)-1)
+        self.quick_sort(nums, 0, len(nums)-1, len(nums)-k)
         return nums[len(nums)-k]
 
-    def quick_sort(self, list, low, high):
+    def quick_sort(self, list, low, high, idx):
         if low >= high: return list
         i = low
         j = high
@@ -28,9 +28,13 @@ class Solution:
                 low += 1
             list[high] = list[low]
         list[low] = pivot
+        if low == idx: return
 
-        self.quick_sort(list, i, low-1)
-        self.quick_sort(list, low+1, j) 
+        elif low < idx:
+            self.quick_sort(list, low+1, j, idx) 
+        else:
+            self.quick_sort(list, i, low-1, idx)
+        
 
 
 

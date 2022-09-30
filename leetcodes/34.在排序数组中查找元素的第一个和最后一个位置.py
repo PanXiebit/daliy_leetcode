@@ -5,7 +5,41 @@
 #
 
 # @lc code=start
+
 class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if len(nums) == 0:
+            return [-1, -1]
+        if len(nums) == 1 and nums[0] != target:
+            return [-1, -1]
+        if len(nums) == 1 and nums[0] == target:
+            return [0, 0]
+        left = 0
+        right = len(nums) - 1
+        while(left <= right):
+            
+            mid = (left + right) // 2
+            print(left, right, mid)
+            if nums[mid] < target:
+                left = mid + 1
+            elif nums[mid] > target:
+                right = mid - 1
+            else: # nums[mid] == target
+                if nums[left] < target:
+                    left = left + 1
+                if nums[right] > target:
+                    right = right - 1
+                if nums[left] == nums[right] == target:
+                    return [left, right]
+            
+
+        if left == right and nums[left] == target:
+            return [left, right]
+        else:
+            return [-1, -1]
+       
+
+class Solution2:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         
         if len(nums) == 0:
@@ -78,7 +112,7 @@ class Solution:
 
 
 # solution 3
-class Solution:
+class Solution3:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         start = 0
         end = len(nums) - 1
@@ -120,11 +154,14 @@ class Solution:
 
 
 """
-- 二分查找：**循环不变量**，保持区间的定义不变，比如 [left, right], 那么 while(left <= right), 且nums[middle] > target时，middle肯定不可能等于target,则 right = middle - 1. 
+- 二分查找：**循环不变量**，保持区间的定义不变，比如 [left, right], 
+那么 while(left <= right), 且nums[middle] > target时，
+middle肯定不可能等于target,则 right = middle - 1. 
 
 寻找target在数组里的左右边界，有如下三种情况：
 
-* 情况一：target 在数组范围的右边或者左边，例如数组{3, 4, 5}，target为2或者数组{3, 4, 5},target为6，此时应该返回{-1, -1}
+* 情况一：target 在数组范围的右边或者左边，例如数组{3, 4, 5}，
+    target为2或者数组{3, 4, 5},target为6，此时应该返回{-1, -1}
 * 情况二：target 在数组范围中，且数组中不存在target，例如数组{3,6,7},target为5，此时应该返回{-1, -1}
 * 情况三：target 在数组范围中，且数组中存在target，例如数组{3,6,7},target为6，此时应该返回{1, 1}
 
